@@ -1,3 +1,7 @@
+import glob
+import time
+timestr = time.strftime("%Y%m%d")
+
 class ExtractTableFromRPT:
     def __init__(self, text_file, output_path, columns, table_name):
         self.text_file = text_file
@@ -76,8 +80,8 @@ class ExtractTableFromRPT:
         print("Processing completed successfully!\n")
 
 
-input_path = "real_cases/extract_tables_from_rpt/data/data.rpt"
-sales_output_path = "real_cases/extract_tables_from_rpt/data/SALES.csv"
+input_path = glob.glob("real_cases/extract_tables_from_rpt/data/*.rpt")[-1]
+sales_output_path = f"real_cases/extract_tables_from_rpt/data/{timestr}_SALES.csv"
 sales_columns = "ID,PRODUCT_NAME,AMOUNT,SELLER_ID"
 sales_table_name = "SALES"
 
