@@ -1,23 +1,31 @@
+import os
+from IPython.display import display
+
 class CsvHandler:
-    def __init__(self, directory) -> None:
+    def __init__(self, directory, separator=",") -> None:
         self.dir = directory
+        self.separator = separator
 
-    def read(self, data):
-        self.__dir_exists()
-        print(f"value '{data}' read from {self.dir}")
+    def read(self, filename):
+        file_path = f"{self.dir}/{filename}.csv"
 
-    def insert(self, data):
-        print(f"value '{data}' inserted to {self.dir}")
+        if not self.__file_path_exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
 
-    def __dir_exists(self):
-        exists = False
-        if self.dir:
-            exists = True
+        data = []
+        with open(file_path, 'r', encoding='utf-8') as csv_file:
+            for line in csv_file:
+                stripped_line = line.strip()
+                if stripped_line:
+                    row = stripped_line.split(self.separator)
+                    data.append(row)
 
-        print(f"dir existance is {exists}")
-        return exists
+        return data
+
+    def __file_path_exists(self, file_path):
+            return os.path.exists(file_path)
 
 
-handler = CsvHandler("path/data.csv")
+handler = CsvHandler("object_programming/data", ",")
 
-handler.read("marilzon")
+display(handler.read("heroes"))
