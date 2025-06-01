@@ -1,5 +1,6 @@
 from pprint import pprint
 
+
 class SomeClass:
     def __init__(self) -> None:
         self.__value = None
@@ -13,6 +14,7 @@ class SomeClass:
     def getter_value(self) -> int:
         pprint(f"getter: {self.__value}")
         return self.__value
+
 
 instance_some_class = SomeClass()
 setter_value = instance_some_class.getter_value

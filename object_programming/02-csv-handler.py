@@ -17,6 +17,7 @@ class CsvHandler:
         print(f"dir existance is {exists}")
         return exists
 
+
 handler = CsvHandler("path/data.csv")
 
 handler.read("marilzon")

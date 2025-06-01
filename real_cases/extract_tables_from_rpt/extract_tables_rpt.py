@@ -1,6 +1,8 @@
 from glob import glob
 import time
+
 timestr = time.strftime("%Y%m%d")
+
 
 class ExtractTableFromRPT:
     def __init__(self, text_file, output_path, columns, table_name):
@@ -23,7 +25,8 @@ class ExtractTableFromRPT:
         print("\n[2/5] Filtering unwanted lines...")
         bad_words_set = set(bad_words)
         self.content_without_bad_lines = "\n".join(
-            line for line in self.content.splitlines()
+            line
+            for line in self.content.splitlines()
             if not any(bad_word in line for bad_word in bad_words_set)
         )
         print("→ Unwanted lines removed")
@@ -31,7 +34,7 @@ class ExtractTableFromRPT:
     def __transform_spaces_to_comma(self):
         print("\n[3/5] Converting spaces to commas...")
         self.content_with_comma_sep = "\n".join(
-            ','.join(line.split())
+            ",".join(line.split())
             for line in self.content_without_bad_lines.splitlines()
         )
         print("→ CSV conversion complete")
@@ -85,7 +88,8 @@ sales_output_path = f"real_cases/extract_tables_from_rpt/data/{timestr}_SALES.cs
 sales_columns = "ID,PRODUCT_NAME,AMOUNT,SELLER_ID"
 sales_table_name = "SALES"
 
-extract_tables_from_rpt = ExtractTableFromRPT(input_path, sales_output_path, sales_columns, sales_table_name)
+extract_tables_from_rpt = ExtractTableFromRPT(
+    input_path, sales_output_path, sales_columns, sales_table_name
+)
 
 extract_tables_from_rpt.execute_etl()
-

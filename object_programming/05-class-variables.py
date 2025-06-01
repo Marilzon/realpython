@@ -5,6 +5,7 @@ class SomeClass:
         self.state = state
         print(f"init: {self.state}")
 
+
 obj1 = SomeClass(True)
 obj2 = SomeClass(True)
 print(obj1.project_name)
