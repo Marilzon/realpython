@@ -2,7 +2,7 @@ import os
 from IPython.display import display
 
 class CsvHandler:
-    def __init__(self, directory, separator=",") -> None:
+    def __init__(self, *, directory, separator=",") -> None:
         self.dir = directory
         self.separator = separator
 
@@ -12,20 +12,23 @@ class CsvHandler:
         if not self.__file_path_exists(file_path):
             raise FileNotFoundError(f"File not found: {file_path}")
 
-        data = []
         with open(file_path, 'r', encoding='utf-8') as csv_file:
-            for line in csv_file:
-                stripped_line = line.strip()
-                if stripped_line:
-                    row = stripped_line.split(self.separator)
-                    data.append(row)
+            lines = csv_file.readlines()
+            processed_map = map(self.__csv_strip_split, lines, ",")
+            processed_list = list(processed_map)
 
-        return data
+            if not processed_list:
+                return []
+
+            return processed_list
 
     def __file_path_exists(self, file_path):
             return os.path.exists(file_path)
 
+    def __csv_strip_split(self, data, separator):
+        return data.strip().split(separator)
 
-handler = CsvHandler("object_programming/data", ",")
+
+handler = CsvHandler(directory="object_programming/data", separator=",")
 
 display(handler.read("heroes"))
