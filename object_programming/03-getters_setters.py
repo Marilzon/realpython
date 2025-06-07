@@ -28,15 +28,8 @@ class User:
         else:
             raise ValueError("Value is not integer valid!")
 
+
 user = User(33, "Marilzon")
-
 display(user.id, user.user_name)
-
 user.id = 500
-
 display(user.id, user.user_name)
-
-try:
-    user.user_name = 21321213321
-except Exception as e:
-    display(e)
