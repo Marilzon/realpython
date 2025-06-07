@@ -1,4 +1,3 @@
-from IPython.display import display
 
 
 class User:
@@ -30,6 +29,6 @@ class User:
 
 
 user = User(33, "Marilzon")
-display(user.id, user.user_name)
+print(user.id, user.user_name)
 user.id = 500
-display(user.id, user.user_name)
+print(user.id, user.user_name)

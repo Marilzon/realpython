@@ -1,5 +1,4 @@
 import os
-from IPython.display import display
 
 
 class CsvHandler:
@@ -32,4 +31,4 @@ class CsvHandler:
 
 handler = CsvHandler(directory="object_programming/data", separator=",")
 
-display(handler.read("heroes"))
+print(handler.read("heroes"))

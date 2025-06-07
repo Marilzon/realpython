@@ -1,4 +1,3 @@
-from IPython.display import display
 
 
 class Hero:
@@ -18,4 +17,4 @@ class Hero:
 spider = Hero("Spider", 200)
 spider_name = spider.get_name()
 
-display(spider_name)
+print(spider_name)
