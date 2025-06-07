@@ -1,22 +1,42 @@
 from IPython.display import display
 
 
-class SomeClass:
-    def __init__(self) -> None:
-        self.__value = None
-        display(f"init: {self.__value}")
-
-    def setter_value(self, value: int) -> None:
-        self.__value = value
-        display(f"setter: {self.__value}")
+class User:
+    def __init__(self, id, user_name):
+        self.__id = id
+        self.__user_name = user_name
 
     @property
-    def getter_value(self) -> int:
-        display(f"getter: {self.__value}")
+    def user_name(self):
+        return self.__user_name
 
+    @user_name.setter
+    def user_name(self, value):
+        if isinstance(value, str) and value:
+            self.__user_name = value
+        else:
+            raise ValueError("Value is not str valid!")
 
-instance_some_class = SomeClass()
-setter_value = instance_some_class.setter_value(1)
-setter_value = instance_some_class.setter_value(2)
-setter_value = instance_some_class.setter_value(3)
-setter_value = instance_some_class.getter_value
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, value):
+        if isinstance(value, int) and value:
+            self.__id = value
+        else:
+            raise ValueError("Value is not integer valid!")
+
+user = User(33, "Marilzon")
+
+display(user.id, user.user_name)
+
+user.id = 500
+
+display(user.id, user.user_name)
+
+try:
+    user.user_name = 21321213321
+except Exception as e:
+    display(e)
