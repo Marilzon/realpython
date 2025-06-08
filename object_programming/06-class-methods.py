@@ -7,14 +7,15 @@ class Checkout:
     def __init__(self, value: Decimal) -> None:
         self.amount = value
 
-    def get_products_amount(self):
+    def get_products_amount(self) -> str:
         product_value = self.amount * self.tax
 
         return f"amount: {product_value=:.2f}"
 
     @classmethod
-    def alter_tax(cls, value: Decimal):
+    def alter_tax(cls, value: Decimal) -> None:
         cls.tax = value
+
 
 checkout_a = Checkout(30.50)
 checkout_b = Checkout(50)
