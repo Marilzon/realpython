@@ -1,4 +1,4 @@
- # BAD OPEN CLOSED SOLID
+# BAD OPEN CLOSED SOLID
 class Transaction:
     def execute(self, transaction_type: str) -> None:
         if transaction_type == "credit":
@@ -12,9 +12,11 @@ class Transaction:
     def __execute_debit(self):
         return f"Debit operation success."
 
+
 transaction = Transaction()
 operation = "credit"
-print(transaction.execute(operation)+"\n")
+print(transaction.execute(operation) + "\n")
+
 
 # NICE OPEN CLOSED SOLID
 class Account:
