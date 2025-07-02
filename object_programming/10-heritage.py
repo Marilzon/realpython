@@ -1,5 +1,6 @@
 import datetime, time
 
+
 class MaxBank:
     def __init__(self, country: str) -> None:
         self.country = country
@@ -15,7 +16,9 @@ class Transaction(MaxBank):
         self.type = type
 
     def update_timestamp(self) -> None:
-        self.timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+        self.timestamp = datetime.datetime.fromtimestamp(time.time()).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
 
     def execute_transaction(self) -> str:
         self.update_timestamp()
