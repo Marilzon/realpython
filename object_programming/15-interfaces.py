@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from pprint import pprint
 
+
 class Employee(ABC):
     @abstractmethod
     def do_work(self) -> None: ...
@@ -20,6 +21,7 @@ class DataEngineer(Employee):
     def pause_work(self):
         pprint("Pause work")
 
+
 class Developer(Employee):
     def do_work(self):
         pprint("Developer Working")
@@ -30,10 +32,12 @@ class Developer(Employee):
     def pause_work(self):
         pprint("Pause work")
 
+
 def employee_notifications(employee: Employee):
     employee.do_work()
     print("Work finished, go to home employee")
     employee.go_to_home()
+
 
 if __name__ == "__main__":
     john_doe = DataEngineer()
@@ -41,6 +45,3 @@ if __name__ == "__main__":
 
     employee_notifications(john_doe)
     employee_notifications(van_doe)
-
-
-
